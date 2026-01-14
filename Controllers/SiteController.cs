@@ -13,7 +13,7 @@ public class SiteController : Controller
         return View();
     }
 
-    public async Task<ActionResult> All()
+    public async Task<ActionResult<Moon>> All()
     {
         try
         {
@@ -43,8 +43,8 @@ public class SiteController : Controller
                 throw new Exception("Planet can not be null or empty...");
             }
             databaseContext.Planets.Add(new Planet { Name = planetName });
-            databaseContext.SaveChanges();
-            return RedirectToAction("Home");
+            await databaseContext.SaveChangesAsync();
+            return RedirectToAction("All");
         }
         catch (Exception e)
         {
@@ -82,8 +82,8 @@ public class SiteController : Controller
                 throw new Exception("Planet can not be null or empty...");
             }
             databaseContext.Moons.Add(new Moon { Name = moonName, PlanetId = planetId });
-            databaseContext.SaveChanges();
-            return RedirectToAction("Home");
+            await databaseContext.SaveChangesAsync();
+            return RedirectToAction("All");
         }
         catch (Exception e)
         {

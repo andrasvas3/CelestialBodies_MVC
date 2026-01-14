@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CelestialBodies_MVC.Models;
 
 [Table("Planet")]
-class Planet
+public class Planet
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CelestialBodies_MVC.Models;
 
 [Table("Moon")]
-class Moon
+public class Moon
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

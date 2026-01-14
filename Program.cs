@@ -8,6 +8,8 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddControllersWithViews();
+        builder.Services.Configure<CookiePolicyOptions>(o => o.Secure = CookieSecurePolicy.Always);
+        builder.Services.AddResponseCompression();
 
         var app = builder.Build();
         app.UseHsts();
@@ -15,6 +17,7 @@ public class Program
         app.UseRouting();
         app.UseAuthorization();
         app.MapStaticAssets();
+        app.UseResponseCompression();
         app.MapControllerRoute(name: "default", pattern: "{controller=Site}/{action=Home}").WithStaticAssets();
         app.Run();
     }
